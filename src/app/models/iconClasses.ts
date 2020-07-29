@@ -1,3 +1,26 @@
 export const iconClasses =  {
-  "Sports": "far fa-futbol"
+  "General Knowledge": "fas fa-brain",
+  "Entertainment: Books": "fas fa-book-open",
+  "Entertainment: Film": "fas fa-film",
+  "Entertainment: Music": "fas fa-music",
+  "Entertainment: Musicals & Theatres": "fas fa-theater-masks",
+  "Entertainment: Television": "fas fa-tv",
+  "Entertainment: Video Games": "fas fa-gamepad",
+  "Entertainment: Board Games": "fas fa-chess",
+  "Science & Nature": "fas fa-leaf",
+  "Science: Computers": "fas fa-laptop-code",
+  "Science: Mathematics": "fas fa-square-root-alt",
+  "Mythology": "fas fa-meteor",
+  "Sports": "far fa-futbol",
+  "Geography": "fas fa-globe-americas",
+  "History": "fas fa-landmark",
+  "Politics": "fas fa-fist-raised",
+  "Art": "fas fa-palette",
+  "Celebrities": "fas fa-star",
+  "Animals": "fas fa-paw",
+  "Vehicles": "fas fa-car",
+  "Entertainment: Comics": "fas fa-mask",
+  "Science: Gadgets": "fas fa-tablet-alt",
+  "Entertainment: Japanese Anime & Manga": "fab fa-d-and-d",
+  "Entertainment: Cartoon & Animations": "fas fa-ghost"
 }

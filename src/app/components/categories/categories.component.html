@@ -1,9 +1,10 @@
+<h2 style="text-align: center;">Select a Category</h2>
 <div fxLayout="row wrap" fxLayoutAlign="center center">
-  <mat-card fxFlex *ngFor="let cat of categories">
-    <mat-card-content>
-      <p>id: {{ cat.id }}</p>
-      <p>name: {{ cat.name }}</p>
-      <i [class]="iconClasses[cat.name]"></i>
-    </mat-card-content>
-  </mat-card>
+  <button mat-flat-button class="category" *ngFor="let cat of categories">
+    <i [class]="iconClasses[cat.name]" style="font-size: 45px;"></i>
+    <br>
+    <span style="margin: 0; white-space: normal;">
+      {{ cat.name.split(": ")[1]? cat.name.split(": ")[1] : cat.name }}
+    </span>
+  </button>
 </div>
