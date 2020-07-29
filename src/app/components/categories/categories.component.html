@@ -1,1 +1,9 @@
-<p>categories works!</p>
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex *ngFor="let cat of categories">
+    <mat-card-content>
+      <p>id: {{ cat.id }}</p>
+      <p>name: {{ cat.name }}</p>
+      <i [class]="iconClasses[cat.name]"></i>
+    </mat-card-content>
+  </mat-card>
+</div>

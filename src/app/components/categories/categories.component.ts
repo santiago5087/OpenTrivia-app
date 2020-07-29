@@ -19,7 +19,7 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.openTriviaService.getCategories().subscribe(res => {
       this.categories = res.trivia_categories;
-      console.log(res);
+      console.log(this.categories);
     },
     err => console.log(err));
   }
