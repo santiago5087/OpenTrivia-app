@@ -27,9 +27,9 @@ export class CategoriesComponent implements OnInit {
     err => console.log(err));
   }
 
-  openOptions(id: string, name: string) {
-    console.log(id);
-    this.bottomSheet.open(TriviaOptionsComponent, { data: { categoryId: id, categoryName: name } });
+  openOptions(id: number, name: string) {
+    let category: Category = { id: id, name: name };
+    this.bottomSheet.open(TriviaOptionsComponent, { data: category });
   }
 
 }

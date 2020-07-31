@@ -1,1 +1,27 @@
-<p>trivia-options works! and catID: {{ categoryId }}</p>
+<div class="container">
+  <h3 style="font-weight: 500;">{{ categoryName }}</h3>
+
+  <form fxLayout="column" fxLayoutAlign="center start" [formGroup]="optionsForm" 
+    (ngSubmit)="onSubmit()">
+    
+      <mat-radio-group color="primary" fxFlex formControlName="difficulty" class="radio-group">
+        <p style="font-size: small;">Select difficulty</p>
+        <mat-radio-button class="radio-button" value="easy">Easy</mat-radio-button>
+        <mat-radio-button class="radio-button" value="medium">Medium</mat-radio-button>
+        <mat-radio-button class="radio-button" value="hard">Hard</mat-radio-button>
+      </mat-radio-group>
+    
+    
+      <mat-radio-group color="primary" fxFlex formControlName="numberOfQuestions" class="radio-group">
+        <p style="font-size: small;">Select number of questions</p>
+        <mat-radio-button class="radio-button" value=5>5</mat-radio-button>
+        <mat-radio-button class="radio-button" value=10>10</mat-radio-button>
+        <mat-radio-button class="radio-button" value=20>20</mat-radio-button>
+      </mat-radio-group>
+    
+    <div class="submit-button">
+      <button color="primary" style="margin-right: 15px;" mat-raised-button>Go!</button>
+      <button color="accent" type="button" mat-flat-button (click)="closeSheet()">Close</button>
+    </div>
+  </form>
+</div>
