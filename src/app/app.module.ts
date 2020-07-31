@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,13 +17,15 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
     TriviaOptionsComponent,
-    HeaderComponent
+    HeaderComponent,
+    TriviaQuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
