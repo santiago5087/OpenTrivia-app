@@ -15,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-questions.component';
@@ -40,7 +41,8 @@ import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-q
     ReactiveFormsModule,
     FormsModule,
     MatRadioModule,
-    RouterModule
+    RouterModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +8,9 @@ import { Router } from '@angular/router';
 export class OpenTriviaService {
 
   baseURL = "https://opentdb.com/";
-  questions: Subject<any> = new Subject<any>();
+  questions: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
-  constructor(private http: HttpClient,
-    private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   getCategories(): Observable<any> {
     return this.http.get<any>(`${this.baseURL}api_category.php`);
@@ -23,9 +21,7 @@ export class OpenTriviaService {
       (`${this.baseURL}api.php?amount=${numberOfQuestions}&category=${categoryId}&difficulty=${difficulty}`)
       .subscribe(questions => {
         if (questions.response_code == 0) {
-          this.router.navigate(['/questions']).then(completed => {
-            if (completed) this.sendQuestions(questions.results);
-          })
+          this.sendQuestions(questions.results);
         } else {
           console.log(questions);
         }

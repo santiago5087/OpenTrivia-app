@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { FormArray, FormControl, Validators } from '@angular/forms';
 
 import { OpenTriviaService } from '../../services/open-trivia.service';
 
@@ -10,16 +11,17 @@ import { OpenTriviaService } from '../../services/open-trivia.service';
 })
 export class TriviaQuestionsComponent implements OnInit, OnDestroy {
 
-  questions: any[] = undefined;
+  questions = new FormArray([]);
   subscription: Subscription;
 
   constructor(private openTriviaService: OpenTriviaService) { }
 
   ngOnInit(): void {
-    console.log("Hola")
     this.subscription = this.openTriviaService.getQuestionsObservable().subscribe(
       questions => {
-        this.questions = questions;
+        questions.forEach(question => {
+          this.questions.push(new FormControl("", Validators.required))
+        });
         console.log(questions);
       },
       err => console.log(err)
