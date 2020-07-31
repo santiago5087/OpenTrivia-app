@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { OpenTriviaService } from '../../services/open-trivia.service';
 import { Category } from '../../models/category';
 
 @Component({
@@ -17,7 +18,8 @@ export class TriviaOptionsComponent implements OnInit {
 
   constructor(private bottomSheetRef: MatBottomSheetRef<TriviaOptionsComponent>,
       @Inject(MAT_BOTTOM_SHEET_DATA) public data: Category,
-      private fb: FormBuilder) { 
+      private fb: FormBuilder,
+      private openTriviaService: OpenTriviaService) { 
         this.categoryId = data.id;
         this.categoryName = data.name;
       }
@@ -30,7 +32,9 @@ export class TriviaOptionsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.optionsForm.value);
+    let difficulty: string = this.optionsForm.value.difficulty;
+    let numberOfQuestions: string = this.optionsForm.value.numberOfQuestions;
+    this.openTriviaService.getQuestions(this.categoryId.toString(), numberOfQuestions, difficulty);
   }
 
   closeSheet() {
