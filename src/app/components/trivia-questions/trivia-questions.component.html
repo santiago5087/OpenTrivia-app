@@ -6,7 +6,16 @@
       <mat-step *ngFor="let control of questionControls.controls; index as i"
         [stepControl]="questionControls.controls[i]">
         <div>
-          <ng-template matStepLabel>Q#{{ i }}</ng-template>
+          <ng-template matStepLabel>Q#{{ i + 1 }}</ng-template>
+          <p>{{ questions[i].question }}</p>
+
+          <mat-radio-group fxLayout="column" color="primary" class="radio-group" 
+            [formControlName]="i">
+              <mat-radio-button fxFlex *ngFor="let option of questions[i].options" [value]="option">
+                {{ option }}
+              </mat-radio-button>
+          </mat-radio-group>
+
           <button mat-flat-button type="button" matStepperNext>Next</button>
         </div>
       </mat-step>
