@@ -17,6 +17,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-questions.component';
 
@@ -42,7 +43,8 @@ import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-q
     FormsModule,
     MatRadioModule,
     RouterModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

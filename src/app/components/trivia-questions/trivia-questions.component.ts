@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormArray, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormControl, Validators, FormGroup, Form } from '@angular/forms';
 
 import { OpenTriviaService } from '../../services/open-trivia.service';
+import { Question } from '../../models/question';
 
 @Component({
   selector: 'app-trivia-questions',
@@ -11,7 +12,12 @@ import { OpenTriviaService } from '../../services/open-trivia.service';
 })
 export class TriviaQuestionsComponent implements OnInit, OnDestroy {
 
-  questions = new FormArray([]);
+  triviaForm = new FormGroup({
+    questionControls: new FormArray([])
+  });
+  questionControls = this.triviaForm.get('questionControls') as FormArray;
+  
+  questions: Question[] = [];
   subscription: Subscription;
 
   constructor(private openTriviaService: OpenTriviaService) { }
@@ -19,10 +25,16 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.openTriviaService.getQuestionsObservable().subscribe(
       questions => {
+        this.questions = [];
+        this.questionControls.clear();
         questions.forEach(question => {
-          this.questions.push(new FormControl("", Validators.required))
+          this.questionControls.push(new FormControl(null, Validators.required));
+          this.questions.push({ 
+            correct_answer: question.correct_answer,
+            incorrect_answers: question.incorrect_answers,
+            question: question.question
+          });
         });
-        console.log(questions);
       },
       err => console.log(err)
     );
@@ -30,6 +42,12 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.triviaForm.reset();
+    this.questionControls.reset();
+  }
+
+  onSubmit() {
+    console.log(this.triviaForm.value);
   }
 
 }
