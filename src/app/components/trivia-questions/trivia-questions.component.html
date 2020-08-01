@@ -2,7 +2,7 @@
   <mat-spinner *ngIf="questions.length==0"></mat-spinner>
 
   <form *ngIf="questions.length>0" [formGroup]="triviaForm" (ngSubmit)="onSubmit()">
-    <mat-horizontal-stepper formArrayName="questionControls">
+    <mat-horizontal-stepper formArrayName="questionControls" color="accent">
       <mat-step *ngFor="let control of questionControls.controls; index as i"
         [stepControl]="questionControls.controls[i]">
         <div>

@@ -1,6 +1,21 @@
+$bg-color: #424242;
+$bg-darker-color: #0000009c;
+
+.container {
+  background-color: $bg-color;
+}
+
+.main-title {
+  text-align: center;
+  padding: 25px;
+  color: white;
+  font-size: x-large;
+}
+
 .category {
   margin: 10px;
   width: 150px;
   height: 150px;
   padding: 20px;
+  background-color: $bg-darker-color;
 }
