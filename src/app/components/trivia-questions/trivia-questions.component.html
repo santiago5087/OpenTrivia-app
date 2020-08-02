@@ -2,35 +2,34 @@
   <mat-spinner *ngIf="questions.length==0"></mat-spinner>
 
   <form *ngIf="questions.length>0" [formGroup]="triviaForm" (ngSubmit)="onSubmit()">
-    <mat-horizontal-stepper formArrayName="questionControls" color="accent">
+    <mat-horizontal-stepper class="stepper" formArrayName="questionControls" color="accent">
       <mat-step *ngFor="let control of questionControls.controls; index as i"
         [stepControl]="questionControls.controls[i]">
-        <div>
-          <ng-template matStepLabel>Q#{{ i + 1 }}</ng-template>
-          <p>{{ questions[i].question }}</p>
 
-          <mat-radio-group fxLayout="column" color="primary" class="radio-group" 
-            [formControlName]="i">
-              <mat-radio-button fxFlex *ngFor="let option of questions[i].options" [value]="option">
-                {{ option }}
-              </mat-radio-button>
-          </mat-radio-group>
+        <ng-template matStepLabel>Q#{{ i + 1 }}</ng-template>
+        <p style="margin-top: 36px;">{{ questions[i].question }}</p>
 
-          <button mat-flat-button type="button" matStepperNext>Next</button>
-        </div>
+        <mat-radio-group fxLayout="column" color="primary" class="radio-group" 
+          [formControlName]="i">
+            <mat-radio-button fxFlex *ngFor="let option of questions[i].options" class="radio-button" 
+              [value]="option">
+              {{ option }}
+            </mat-radio-button>
+        </mat-radio-group>
+
+        <ng-container *ngIf="questionControls.controls.length - 1 - i > 0 else sendButton">
+          <button mat-button type="button" matStepperPrevious>
+            <i class="fas fa-hand-point-left"></i> Previous
+          </button>
+          <button mat-button type="button" matStepperNext>
+            Next <i class="fas fa-hand-point-right"></i>
+          </button>
+        </ng-container>
+
+        <ng-template #sendButton>
+          <button mat-flat-button color="primary" [disabled]="!triviaForm.valid">Send!</button>
+        </ng-template>
       </mat-step>
     </mat-horizontal-stepper>
-
-
-
-
-
-    <!-- <div *ngFor="let control of questionControls.controls; index as i">
-      <p>{{ questions[i].question }}</p>
-      <input [formControl]="questionControls.controls[i]">
-    </div> -->
-    <button mat-flat-button>Send</button>
   </form>
-  <p>{{ triviaForm.status }}</p>
 </div>
- 

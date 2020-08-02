@@ -1,6 +1,6 @@
 $bg-color: #424242;
 $bg-darker-color: #0000009c;
-
+$primary-color: #c2185b;
 .container {
   background-color: $bg-color;
   height: 100%;
@@ -19,4 +19,8 @@ $bg-darker-color: #0000009c;
   height: 150px;
   padding: 20px;
   background-color: $bg-darker-color;
+}
+
+.category:hover {
+  background-color: $primary-color;
 }
