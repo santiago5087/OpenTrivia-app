@@ -1,12 +1,20 @@
 <div class="container">
   <h2 class="main-title">Select a Category</h2>
-  <div fxLayout="row wrap" fxLayoutAlign="center center">
-    <button mat-flat-button class="category" *ngFor="let cat of categories" (click)="openOptions(cat.id, cat.name)">
-      <i [class]="iconClasses[cat.name]" style="font-size: 45px;"></i>
-      <br>
-      <span style="margin: 0; white-space: normal;">
-        {{ cat.name.split(": ")[1]? cat.name.split(": ")[1] : cat.name }}
-      </span>
-    </button>
+
+  <div *ngIf="categories.length == 0 else categoryPanel" fxLayout="column" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+    <p class="spinner-text">Please wait a moment...</p>
   </div>
+
+  <ng-template #categoryPanel>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+      <button mat-flat-button class="category" *ngFor="let cat of categories" (click)="openOptions(cat.id, cat.name)">
+        <i [class]="iconClasses[cat.name]" style="font-size: 45px;"></i>
+        <br>
+        <span style="margin: 0; white-space: normal;">
+          {{ cat.name.split(": ")[1]? cat.name.split(": ")[1] : cat.name }}
+        </span>
+      </button>
+    </div>
+  </ng-template>
 </div>
