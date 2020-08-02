@@ -20,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-questions.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-q
     CategoriesComponent,
     TriviaOptionsComponent,
     HeaderComponent,
-    TriviaQuestionsComponent
+    TriviaQuestionsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

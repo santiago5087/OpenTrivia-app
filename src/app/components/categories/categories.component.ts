@@ -9,7 +9,8 @@ import { iconClasses } from '../../models/iconClasses';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+  styleUrls: ['./categories.component.scss'],
+  styles: [":host { min-height: 100vh; background-color: #424242 }"]
 })
 export class CategoriesComponent implements OnInit {
 
