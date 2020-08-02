@@ -11,13 +11,13 @@
           [stepControl]="questionControls.controls[i]">
   
           <ng-template matStepLabel>Q#{{ i + 1 }}</ng-template>
-          <p style="margin-top: 36px;">{{ questions[i].question }}</p>
+          <p style="margin-top: 36px;">{{ htmlDecode(questions[i].question) }}</p>
   
           <mat-radio-group fxLayout="column" color="primary" class="radio-group" 
             [formControlName]="i">
               <mat-radio-button fxFlex *ngFor="let option of questions[i].options" class="radio-button" 
                 [value]="option">
-                {{ option }}
+                {{ htmlDecode(option) }}
               </mat-radio-button>
           </mat-radio-group>
   

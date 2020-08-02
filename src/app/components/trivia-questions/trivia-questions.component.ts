@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormArray, FormControl, Validators, FormGroup, Form } from '@angular/forms';
+import { FormArray, FormControl, Validators, FormGroup } from '@angular/forms';
 
 import { OpenTriviaService } from '../../services/open-trivia.service';
 import { Question } from '../../models/question';
@@ -67,6 +67,11 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     console.log(this.triviaForm.value);
+  }
+
+  htmlDecode(input: string): string {
+    let doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
   }
 
 }
