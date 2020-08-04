@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 
 import { Question } from '../models/question';
+import { Results } from '../models/results';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class OpenTriviaService {
 
   baseURL = "https://opentdb.com/";
   questions: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  result: Subject<Results> = new Subject<Results>();
 
   constructor(private http: HttpClient) { }
 
@@ -38,16 +40,28 @@ export class OpenTriviaService {
     return this.questions.asObservable();
   }
 
-  getResults(userAnswers: string[], questions: Question[]) {
-    let questionsNumber = questions.length;
+  getResults(userAnswers: string[], questions: Question[]): Results {
+    let totalQuestions = questions.length;
     let correctAnswers = 0;
 
-    for (let i=0; i < questionsNumber; i++) {
-      if (questions[i].correct_answer == userAnswers[i]) {
-        correctAnswers ++;
+    for (let i=0; i < totalQuestions; i++) {
+      console.log(questions[i].correct_answer, userAnswers[i]);
+      if (questions[i].correct_answer.localeCompare(userAnswers[i]) == 0) {
+        correctAnswers += 1;
       }
     }
     
-    
+    let incorrectAnswers = totalQuestions - correctAnswers;
+    let score = ((correctAnswers/totalQuestions) * 100).toFixed(2) + " %";
+    const result: Results = { 
+      totalQuestions,
+      incorrectAnswers,
+      correctAnswers,
+      score
+    }
+
+    return result;
+    // A la hora de mostar los resultados hay que decodificar el texto
   }
+
 }

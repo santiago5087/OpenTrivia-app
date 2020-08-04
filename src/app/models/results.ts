@@ -1,6 +1,6 @@
 export interface Results {
   totalQuestions: number;
-  score: number;
+  score: string;
   correctAnswers: number;
   incorrectAnswers: number;
 }
