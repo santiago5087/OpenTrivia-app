@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 
+import { Question } from '../models/question';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +36,18 @@ export class OpenTriviaService {
 
   getQuestionsObservable(): Observable<any> {
     return this.questions.asObservable();
+  }
+
+  getResults(userAnswers: string[], questions: Question[]) {
+    let questionsNumber = questions.length;
+    let correctAnswers = 0;
+
+    for (let i=0; i < questionsNumber; i++) {
+      if (questions[i].correct_answer == userAnswers[i]) {
+        correctAnswers ++;
+      }
+    }
+    
+    
   }
 }

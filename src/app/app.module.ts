@@ -9,8 +9,10 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { TriviaOptionsComponent } from './components/trivia-options/trivia-options.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { TriviaOptionsComponent } from './components/trivia-options/trivia-options.component';
+import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-questions.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -19,8 +21,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-questions.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [

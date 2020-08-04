@@ -66,6 +66,8 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    let userAnswers = this.triviaForm.value;
+    
     console.log(this.triviaForm.value);
   }
 
