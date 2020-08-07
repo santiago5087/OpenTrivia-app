@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormArray, FormControl, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { OpenTriviaService } from '../../services/open-trivia.service';
 import { Question } from '../../models/question';
@@ -20,7 +21,8 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
   questions: Question[] = [];
   subscription: Subscription;
 
-  constructor(private openTriviaService: OpenTriviaService) { }
+  constructor(private openTriviaService: OpenTriviaService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.subscription = this.openTriviaService.getQuestionsObservable().subscribe(
@@ -66,8 +68,8 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.triviaForm.value);
-    console.log("Results", this.openTriviaService.getResults(this.triviaForm.value.questionControls, this.questions));
+    this.openTriviaService.getResults(this.triviaForm.value.questionControls, this.questions);
+    this.router.navigate(['/results']);
   }
 
   htmlDecode(input: string): string {

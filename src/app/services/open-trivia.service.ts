@@ -36,16 +36,23 @@ export class OpenTriviaService {
     this.questions.next(questions);
   }
 
+  sendResults(result: Results) {
+    this.result.next(result);
+  }
+
   getQuestionsObservable(): Observable<any> {
     return this.questions.asObservable();
   }
 
-  getResults(userAnswers: string[], questions: Question[]): Results {
+  getResultsObservable(): Observable<Results> {
+    return this.result.asObservable();
+  }
+
+  getResults(userAnswers: string[], questions: Question[]): void {
     let totalQuestions = questions.length;
     let correctAnswers = 0;
 
     for (let i=0; i < totalQuestions; i++) {
-      console.log(questions[i].correct_answer, userAnswers[i]);
       if (questions[i].correct_answer.localeCompare(userAnswers[i]) == 0) {
         correctAnswers += 1;
       }
@@ -59,8 +66,8 @@ export class OpenTriviaService {
       correctAnswers,
       score
     }
-
-    return result;
+    console.log(result);
+    this.sendResults(result);
     // A la hora de mostar los resultados hay que decodificar el texto
   }
 
