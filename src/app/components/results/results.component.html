@@ -1,16 +1,31 @@
-<div class="container">
-  <div fxLayout="column">
-    <div fxFlex class="list-item">
-      Total Questions {{ result.totalQuestions }}      
+<div fxLayout="column" fxLayoutAlign="center center" class="container">
+  <div fxLayout="column" class="results">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="results-item">
+      <span>Total Questions</span> 
+      <span class="result-text">{{ result.totalQuestions }}</span>      
     </div>
-    <div class="list-item">
-      Score {{ result.score }}
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="results-item">
+      <span>Score</span> 
+      <span class="result-text">{{ result.score }}</span>      
     </div>
-    <div class="list-item">
-      Correct Answers {{ result.correctAnswers }}
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="results-item">
+      <span>Correct Answers</span> 
+      <span class="result-text">{{ result.correctAnswers }}</span>      
     </div>
-    <div class="list-item">
-      Incorrect Answers {{ result.incorrectAnswers }}
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="results-item">
+      <span>Incorrect Answers</span> 
+      <span class="result-text">{{ result.incorrectAnswers }}</span>      
     </div>
   </div>
+  <div fxLayoutAlign="space-between center" class="buttons">
+    <button mat-flat-button color="primary" routerLink="/">Goto Home</button>
+    <button mat-flat-button color="primary" (click)="checkAnswers = !checkAnswers">
+      Check Answers
+    </button>
+  </div>
+
+  <ng-container *ngIf="checkAnswers">
+    <p>HOLAAA</p>
+  </ng-container>
+
 </div>

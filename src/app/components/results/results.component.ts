@@ -13,6 +13,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   result:  Results;
   subscription: Subscription;
+  checkAnswers: boolean = false;
 
   constructor(private openTriviaService: OpenTriviaService) { }
 
