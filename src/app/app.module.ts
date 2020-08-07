@@ -11,17 +11,18 @@ import { AppComponent } from './app.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ResultsComponent } from './components/results/results.component';
 import { TriviaOptionsComponent } from './components/trivia-options/trivia-options.component';
 import { TriviaQuestionsComponent } from './components/trivia-questions/trivia-questions.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ResultsComponent } from './components/results/results.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ResultsComponent } from './components/results/results.component';
     MatRadioModule,
     RouterModule,
     MatProgressSpinnerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

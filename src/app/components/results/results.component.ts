@@ -17,7 +17,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   constructor(private openTriviaService: OpenTriviaService) { }
 
   ngOnInit(): void {
-    this.subscription = this.openTriviaService.getResultsObservable().subscribe(result => this.result = result);
+    this.subscription = this.openTriviaService.getResultsObservable().subscribe(result => { this.result = result; console.log("Results at Results Component", result)});
   }
 
   ngOnDestroy(): void {

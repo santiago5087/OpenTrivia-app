@@ -12,7 +12,12 @@ export class OpenTriviaService {
 
   baseURL = "https://opentdb.com/";
   questions: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  result: Subject<Results> = new Subject<Results>();
+  result: BehaviorSubject<Results> = new BehaviorSubject<Results>({ 
+    correctAnswers: 0, 
+    incorrectAnswers: 0,
+    score: "0 %",
+    totalQuestions: 0 
+  });
 
   constructor(private http: HttpClient) { }
 
@@ -66,7 +71,7 @@ export class OpenTriviaService {
       correctAnswers,
       score
     }
-    console.log(result);
+
     this.sendResults(result);
     // A la hora de mostar los resultados hay que decodificar el texto
   }
