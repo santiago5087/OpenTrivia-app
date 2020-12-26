@@ -34,8 +34,8 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
           options.push(question.correct_answer);
         
           /*
-          Para que los elementos del arreglo "options" queden en posiciones aleatorias y no haya un patrón 
-          de repuestas entre las preguntas.
+          Para que los elementos del arreglo "options" queden en posiciones aleatorias y no haya
+          un patrón de repuestas entre las preguntas.
           */
           for(let i = options.length - 1; i > 0; i--){
             const j = Math.floor(Math.random() * (i+1))

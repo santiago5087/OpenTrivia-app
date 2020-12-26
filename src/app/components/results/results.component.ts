@@ -11,18 +11,29 @@ import { Results } from '../../models/results';
 })
 export class ResultsComponent implements OnInit, OnDestroy {
 
-  result:  Results;
+  result: Results;
+  questions: any[];
   subscription: Subscription;
   checkAnswers: boolean = false;
 
   constructor(private openTriviaService: OpenTriviaService) { }
 
   ngOnInit(): void {
-    this.subscription = this.openTriviaService.getResultsObservable().subscribe(result => { this.result = result; console.log("Results at Results Component", result)});
+    this.subscription = this.openTriviaService.getResultsObservable().subscribe(result => { 
+      this.result = result; 
+      console.log("Results at Results Component", result)
+    });
+    this.openTriviaService.questions.subscribe(questions => {
+      this.questions = questions;
+    });
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  checkAnswersInfo(): void {
+    console.log(this.questions);
   }
 
 }

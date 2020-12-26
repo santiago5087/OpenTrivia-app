@@ -25,7 +25,11 @@
   </div>
 
   <ng-container *ngIf="checkAnswers">
-    <p>HOLAAA</p>
+    <div *ngFor="let question of questions; index as i">
+      <p>Your choice: {{ result.userAnswers[i] }}</p>
+      <p>Correct answer: {{ question['correct_answer'] }}</p>
+      
+    </div>
   </ng-container>
 
 </div>

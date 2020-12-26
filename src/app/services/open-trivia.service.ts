@@ -13,6 +13,7 @@ export class OpenTriviaService {
   baseURL = "https://opentdb.com/";
   questions: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   result: BehaviorSubject<Results> = new BehaviorSubject<Results>({ 
+    userAnswers: [],
     correctAnswers: 0, 
     incorrectAnswers: 0,
     score: "0 %",
@@ -65,7 +66,8 @@ export class OpenTriviaService {
     
     let incorrectAnswers = totalQuestions - correctAnswers;
     let score = ((correctAnswers/totalQuestions) * 100).toFixed(2) + " %";
-    const result: Results = { 
+    const result: Results = {
+      userAnswers,
       totalQuestions,
       incorrectAnswers,
       correctAnswers,
