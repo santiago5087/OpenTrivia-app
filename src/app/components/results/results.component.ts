@@ -37,4 +37,9 @@ export class ResultsComponent implements OnInit, OnDestroy {
     else return ['incorrect', 'far fa-times-circle fa-lg']
   }
 
+  htmlDecode(input: string): string {
+    let doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
+  }
+
 }

@@ -30,13 +30,12 @@
           [ngClass]="checkAnswersClass(result.userAnswers[i], question['correct_answer'])[0]"
           fxLayout="column" fxLayoutAlign="center">
       <p fxLayoutAlign="space-between center">
-        <span><b>Question: </b>{{ question.question }}</span>
-        <i [ngClass]="checkAnswersClass(result.userAnswers[i], question['correct_answer'])[1]" class>
+        <span><b>Question: </b>{{ htmlDecode(question.question) }}</span>
+        <i [ngClass]="checkAnswersClass(result.userAnswers[i], question['correct_answer'])[1]">
         </i>
       </p>
-      <p><b>Your choice: </b>{{ result.userAnswers[i] }}</p>
-      <p><b>Correct answer: </b>{{ question['correct_answer'] }}</p>
-      
+      <p><b>Your choice: </b>{{ htmlDecode(result.userAnswers[i]) }}</p>
+      <p><b>Correct answer: </b>{{ htmlDecode(question['correct_answer']) }}</p>
     </div>
   </ng-container>
 
