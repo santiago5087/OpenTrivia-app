@@ -32,8 +32,9 @@ export class ResultsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  checkAnswersInfo(): void {
-    console.log(this.questions);
+  checkAnswersClass(userAnswer: string, answer): string[] {
+    if(userAnswer === answer) return ['correct', 'far fa-check-circle fa-lg']
+    else return ['incorrect', 'far fa-times-circle fa-lg']
   }
 
 }

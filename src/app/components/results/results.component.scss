@@ -24,3 +24,19 @@
 .buttons {
   width: 70%;
 }
+
+.check-result {
+  width: 70%;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.incorrect {
+  background-color: #ec3d3d8c;
+}
+
+.correct {
+  background-color: #4b8838;
+}
