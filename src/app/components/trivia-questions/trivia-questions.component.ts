@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormArray, FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Question } from '../../models/question';
   templateUrl: './trivia-questions.component.html',
   styleUrls: ['./trivia-questions.component.scss']
 })
-export class TriviaQuestionsComponent implements OnInit, OnDestroy {
+export class TriviaQuestionsComponent implements OnDestroy {
 
   triviaForm = new FormGroup({
     questionControls: new FormArray([])
@@ -22,39 +22,37 @@ export class TriviaQuestionsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(private openTriviaService: OpenTriviaService,
-    private router: Router) { }
-
-  ngOnInit(): void {
-    this.subscription = this.openTriviaService.getQuestionsObservable().subscribe(
-      questions => {
-        this.clearTrivia();
-        questions.forEach(question => {
-          this.questionControls.push(new FormControl(null, Validators.required));
-          let options: string[] = question.incorrect_answers;
-          options.push(question.correct_answer);
-        
-          /*
-          Para que los elementos del arreglo "options" queden en posiciones aleatorias y no haya
-          un patrón de repuestas entre las preguntas.
-          */
-          for(let i = options.length - 1; i > 0; i--){
-            const j = Math.floor(Math.random() * (i+1))
-            const temp = options[i]
-            options[i] = options[j]
-            options[j] = temp
-          }
+    private router: Router) {
+      this.subscription = this.openTriviaService.getQuestionsObservable().subscribe(
+        questions => {
+          this.clearTrivia();
+          questions.forEach(question => {
+            this.questionControls.push(new FormControl(null, Validators.required));
+            let options: string[] = question.incorrect_answers;
+            options.push(question.correct_answer);
           
-          this.questions.push({ 
-            correct_answer: question.correct_answer,
-            options: options,
-            question: question.question
+            /*
+            Para que los elementos del arreglo "options" queden en posiciones aleatorias y no haya
+            un patrón de repuestas entre las preguntas.
+            */
+            for(let i = options.length - 1; i > 0; i--){
+              const j = Math.floor(Math.random() * (i+1))
+              const temp = options[i]
+              options[i] = options[j]
+              options[j] = temp
+            }
+            
+            this.questions.push({ 
+              correct_answer: question.correct_answer,
+              options: options,
+              question: question.question
+            });
           });
-        });
-        console.log("my questions:", this.questions);
-      },
-      err => console.log(err)
-    );
-  }
+          console.log("my questions:", this.questions);
+        },
+        err => console.log(err)
+      );
+    }
 
   clearTrivia(): void {
     this.questions = [];
